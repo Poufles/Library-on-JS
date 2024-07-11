@@ -1,0 +1,81 @@
+@import url('https://fonts.cdnfonts.com/css/signika-sc-2');
+
+:root {
+    font-family: 'Signika SC', sans-serif;
+    font-size: 16px;
+    --bg-color: rgb(242, 240, 233);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+.navbar {
+    padding: 40px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-text > .title {
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    line-height: 80%;
+    margin-bottom: 5px;
+}
+
+.legend-container {
+    display: flex;
+    gap: 50px;
+}
+
+.legend-container .legend {
+    font-size: 1.1rem;
+    list-style: none;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.legend-container .legend > .legend-banner {
+    width: 20px;
+    height: 40px;
+    position: relative;
+}
+
+.legend-container .legend > .legend-banner::after {
+    border-top: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid var(--bg-color);
+    border-right: 10px solid transparent;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.legend-container .legend:first-of-type > .legend-banner {
+    background-color: #34783a;
+}
+
+.legend-container .legend:nth-of-type(2) > .legend-banner {
+    --_banner-color: #ffff3b;
+    background-color: var(--_banner-color);
+}
+
+.legend-container .legend:last-of-type > .legend-banner {
+    background-color: #dd2525;
+}
+
+.library-wrapper {
+    padding: 60px 120px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}

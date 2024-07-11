@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/component_card.css">
+    <script src="scripts/delete.js" defer></script>
+    <title>Book Card</title>
+</head>
+
+<body>
+    <div class="library-wrapper">
+        <button class="card add">
+            <div class="add-wrapper">
+                <?xml version="1.0" ?><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="plus"><line class="cls-1" x1="16" x2="16" y1="7" y2="25"/><line class="cls-1" x1="7" x2="25" y1="16" y2="16"/></g></svg>
+            </div>
+        </button>
+        <div class="card" data-index="0" style="--book-color: #fdff6d">
+            <div class="status-container" data-status="Not Read">
+                <button class="status" id="not-read"></button>
+            </div>
+            <div class="book">
+                <div class="title-author-container">
+                    <h1 id="title">Libro ni Jepoy Dizon</h1>
+                    <p class="" id="author">Jepoy Dizon</p>
+                </div>
+                <div class="genre-container">
+                    <p id="genre">Memez</p>
+                </div>
+            </div>
+            <button class="delete-button" id="0">
+                <?xml version="1.0" ?><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M17 6h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6h5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3zm1 2H6v12h12V8zm-4.586 6l1.768 1.768-1.414 1.414L12 15.414l-1.768 1.768-1.414-1.414L10.586 14l-1.768-1.768 1.414-1.414L12 12.586l1.768-1.768 1.414 1.414L13.414 14zM9 4v2h6V4H9z" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+        <div class="card" data-index="1" style="--book-color: #7aa5f0">
+            <div class="status-container" data-status="On Read">
+                <button class="status" id="on-read"></button>
+            </div>
+            <div class="book">
+                <div class="title-author-container">
+                    <h1 id="title">Ang Sarap Mo Pia</h1>
+                    <p class="" id="author">Mike Enriquez</p>
+                </div>
+                <div class="genre-container">
+                    <p id="genre">Memez</p>
+                </div>
+            </div>
+            <button class="delete-button" id="1">
+                <?xml version="1.0" ?><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M17 6h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6h5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3zm1 2H6v12h12V8zm-4.586 6l1.768 1.768-1.414 1.414L12 15.414l-1.768 1.768-1.414-1.414L10.586 14l-1.768-1.768 1.414-1.414L12 12.586l1.768-1.768 1.414 1.414L13.414 14zM9 4v2h6V4H9z" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+        <div class="card" data-index="2" style="--book-color: #7aa5f0">
+            <div class="status-container" data-status="Read">
+                <button class="status" id="read"></button>
+            </div>
+            <div class="book">
+                <div class="title-author-container">
+                    <h1 id="title">Ang Sarap Mo Pia</h1>
+                    <p class="" id="author">Mike Enriquez</p>
+                </div>
+                <div class="genre-container">
+                    <p id="genre">Memez</p>
+                </div>
+            </div>
+            <button class="delete-button" id="2">
+                <?xml version="1.0" ?><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M17 6h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6h5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3zm1 2H6v12h12V8zm-4.586 6l1.768 1.768-1.414 1.414L12 15.414l-1.768 1.768-1.414-1.414L10.586 14l-1.768-1.768 1.414-1.414L12 12.586l1.768-1.768 1.414 1.414L13.414 14zM9 4v2h6V4H9z" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

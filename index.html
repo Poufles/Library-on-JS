@@ -3,9 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main_style.css">
+    <link rel="stylesheet" href="styles/component_card.css">
     <title>Library List</title>
 </head>
 <body>
-    
+    <nav class="navbar">
+        <div class="logo-text">
+            <p class="title">To Read or<br>Not To Read</p>
+            <p class="sub-title">|| Library List</p>
+        </div>
+        <ul class="legend-container">
+            <li class="legend">
+                <div class="legend-banner"></div>
+                <p class="legend-text">Not Read: <span id="legend-count" data-count="0">0</span></p>
+            </li>
+            <li class="legend">
+                <div class="legend-banner"></div>
+                <p class="legend-text">On Read: <span id="legend-count" data-count="0">0</span></p>
+            </li>
+            <li class="legend">
+                <div class="legend-banner"></div>
+                <p class="legend-text">Read: <span id="legend-count" data-count="0">0</span></p>
+            </li>
+        </ul>
+    </nav>
+    <section class="library-wrapper">
+        <button class="card add">
+            <div class="add-wrapper">
+                <?xml version="1.0" ?><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="plus"><line class="cls-1" x1="16" x2="16" y1="7" y2="25"/><line class="cls-1" x1="7" x2="25" y1="16" y2="16"/></g></svg>
+            </div>
+        </button>
+    </section>
 </body>
 </html>
