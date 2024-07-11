@@ -1,0 +1,225 @@
+.modal {
+    background-color: transparent;
+    border: none;
+    margin: auto;
+    padding: auto;
+}
+
+.modal::backdrop {
+    backdrop-filter: blur(2px);
+}
+
+.modal-container {
+    display: flex;
+    gap: 12px;
+}
+
+.book-container .status {
+    cursor: default;
+}
+
+.book-container .book {
+    box-shadow: none;
+    cursor: default;
+}
+
+.customize-container {
+    background-color: #232323;
+    border-radius: 5px;
+    color: #FFF;
+    width: 300px;
+    padding: 17px 20px;
+}
+
+.customize-container .title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+form {
+    height: calc(100% - 26px);
+    padding-top: 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.book-property-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.book-property-container .input-container {
+    position: relative;
+}
+
+.book-property-container label {
+    background-color: #232323;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(-5%, -50%);
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.book-property-container>div:nth-of-type(n + 4) {
+    cursor: default;
+}
+
+.book-property-container>div:nth-of-type(n + 4) label {
+    margin-bottom: 5px;
+    position: static;
+}
+
+.book-property-container label.active {
+    color: #e3e3e3;
+    font-size: 0.9rem;
+    top: 0;
+}
+
+.book-property-container input[type='text'],
+.book-property-container select {
+    background-color: transparent;
+    border: 2px solid #3c3c3c;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 1rem;
+    padding: 7px;
+    width: 100%;
+    outline: none;
+    transition: 0.3s;
+}
+
+.book-property-container input[type='text']:hover,
+.book-property-container select:hover {
+    box-shadow: 0 0 15px -5px #FFF;
+}
+
+.book-property-container input[type='text']:focus,
+.book-property-container select:focus {
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 15px -5px #FFF;
+}
+
+.book-property-container input[type='text'].active,
+.book-property-container select.active {
+    border: 2px solid #ffffff;
+}
+
+.book-property-container select {
+    appearance: none;
+    position: relative;
+    cursor: pointer;
+}
+
+.book-property-container select>option {
+    background-color: #232323;
+}
+
+.book-property-container>div:nth-of-type(4) div label:not(:first-of-type) {
+    margin-left: 13px;
+}
+
+.book-property-container>div:last-of-type>div {
+    margin-left: 13px;
+    display: inline;
+}
+
+.book-property-container>div:last-of-type>div>input[type='radio'] {
+    appearance: none;
+    background-color: #541818;
+    border-radius: 0;
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    transition: 0.3s;
+    vertical-align: middle;
+}
+
+.book-property-container>div:last-of-type>div>input[type='radio']:first-of-type {
+    background-color: #fdfdfc;
+}
+
+.book-property-container>div:last-of-type>div>input[type='radio']:nth-of-type(2) {
+    background-color: #dd6464;
+}
+
+.book-property-container>div:last-of-type>div>input[type='radio']:nth-of-type(3) {
+    background-color: #65d9ee;
+}
+
+.book-property-container>div:last-of-type>div>input[type='radio']:nth-of-type(4) {
+    background-color: #ee65e0;
+}
+
+.book-property-container>div:last-of-type>div>input[type='radio']:last-of-type {
+    background-color: #26c524;
+}
+
+.book-property-container>div:last-of-type>div>input[type='radio']:not(:first-of-type) {
+    margin-left: 2px;
+}
+
+.book-property-container>div:last-of-type>div>input[type='radio']:checked {
+    transform: scale(0.8);
+}
+
+.customize-container .button-container {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    justify-content: center;
+}
+
+.customize-container .button-container .btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 7px;
+    color: #FFF;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 5px 0;
+    width: 75px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.customize-container .button-container .btn:hover {
+    box-shadow: 0 0 15px -5px #FFF;
+}
+
+.customize-container .button-container .btn:first-of-type {
+    border: 2px solid transparent;
+    background-color: transparent;
+}
+
+.customize-container .button-container .btn:first-of-type:hover {
+    border: 2px solid var(--_btn-color);
+    background-color: transparent;
+}
+
+.customize-container .button-container .btn:nth-of-type(2) {
+    border: 2px solid var(--_btn-color);
+}
+
+.customize-container .button-container .btn:nth-of-type(2):hover {
+    background-color: var(--_btn-color);
+}
+
+.customize-container .button-container .btn:last-of-type {
+    border: 2px solid var(--_btn-color);
+}
+
+.customize-container .button-container .btn:last-of-type:hover {
+    background-color: var(--_btn-color);
+}
+
+.customize-container .button-container .btn.press {
+    background-color: transparent !important;
+    border: 2px solid var(--_btn-color);
+    box-shadow: 0 0 15px -5px var(--_btn-color);
+    color: var(--_btn-color);
+}

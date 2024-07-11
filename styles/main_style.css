@@ -3,7 +3,9 @@
 :root {
     font-family: 'Signika SC', sans-serif;
     font-size: 16px;
-    --bg-color: rgb(242, 240, 233);
+    --bg-color: rgb(250, 247, 250);
+    --color-shadow: #171717;
+    --color-shadow-deep: #696969;
 }
 
 * {

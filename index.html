@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main_style.css">
     <link rel="stylesheet" href="styles/component_card.css">
+    <link rel="stylesheet" href="styles/component_modal.css">
+    <script src="scripts/variables.js" defer></script>
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/keys.js" defer></script>
     <title>Library List</title>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo-text">
@@ -31,9 +37,100 @@
     <section class="library-wrapper">
         <button class="card add">
             <div class="add-wrapper">
-                <?xml version="1.0" ?><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="plus"><line class="cls-1" x1="16" x2="16" y1="7" y2="25"/><line class="cls-1" x1="7" x2="25" y1="16" y2="16"/></g></svg>
+                <?xml version="1.0" ?><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <style>
+                            .cls-1 {
+                                fill: none;
+                                stroke: #FFF;
+                                stroke-linecap: round;
+                                stroke-linejoin: round;
+                                stroke-width: 2px;
+                            }
+                        </style>
+                    </defs>
+                    <title />
+                    <g id="plus">
+                        <line class="cls-1" x1="16" x2="16" y1="7" y2="25" />
+                        <line class="cls-1" x1="7" x2="25" y1="16" y2="16" />
+                    </g>
+                </svg>
             </div>
         </button>
     </section>
+
+    <dialog class="modal">
+        <div class="modal-container">
+            <div class="book-container">
+                <div class="card" style="--book-color: #fdfdfc">
+                    <div class="status-container" data-status="Not Read">
+                        <button class="status" id="not-read"></button>
+                    </div>
+                    <div class="book">
+                        <div class="title-author-container">
+                            <h1 id="title">Libro ni Jepoy Dizon</h1>
+                            <p class="" id="author">Jepoy Dizon</p>
+                        </div>
+                        <div class="genre-container">
+                            <p id="genre">Memez</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="customize-container">
+                <p class="title">Add New Book</p>
+                <form action="">
+                    <div class="book-property-container">
+                        <div class="input-book-title input-container">
+                            <label class="text">Title</label>
+                            <input type="text" id="book-title" class="" value="">
+                        </div>
+                        <div class="input-book-author input-container">
+                            <label class="text">Author</label>
+                            <input type="text" id="book-author" class="" value="">
+                        </div>
+                        <div class="input-book-genre input-container">
+                            <label class="text">Genre</label>
+                            <select name="book-genre" id="book-genre" class="">
+                                <option value="" hidden disabled selected></option>
+                                <option value="action">Action</option>
+                                <option value="comedy">Comdey</option>
+                                <option value="horror">Horror</option>
+                                <option value="thriller">Thriller</option>
+                                <option value="romance">Romance</option>
+                                <option value="fiction">Fiction</option>
+                                <option value="history">History</option>
+                            </select>
+                        </div>
+                        <div class="input-book-status">
+                            <label for="" class="book-status">Status :</label>
+                            <div class="status-choice">
+                                <label><input type="radio" name="status" checked id="" class="input-status">
+                                    Read</label>
+                                <label><input type="radio" name="status" id="" class="input-status"> On Read</label>
+                                <label><input type="radio" name="status" id="" class="input-status"> Not Read</label>
+                            </div>
+                        </div>
+                        <div class="input-book-color">
+                            <label for="" class="book-color">Book Color :</label>
+                            <div class="color-palette">
+                                <input checked type="radio" name="color" id="color" class="input-color" value="#FFF">
+                                <input type="radio" name="color" id="color" class="input-color">
+                                <input type="radio" name="color" id="color" class="input-color">
+                                <input type="radio" name="color" id="color" class="input-color">
+                                <input type="radio" name="color" id="color" class="input-color">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <input type="reset" value="Cancel" class="btn cancel" style="--_btn-color: #FFF">
+                        <input type="reset" value="Reset" class="btn reset" style="--_btn-color: #e73333">
+                        <input type="submit" value="Add" class="btn add" style="--_btn-color: #4be733">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
 </body>
+
 </html>
