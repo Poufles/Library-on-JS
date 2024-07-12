@@ -20,8 +20,8 @@ const modal_btn_add = document.querySelector('.modal .add');
 
 const bookLibrary = new Array();
 
-const status_color = {
-    read : '#dd2525',
+const object_status_color = {
+    read : '#34783a',
     oread : '#ffff3b',
-    nread : '#34783a'
+    nread : '#dd2525'
 };

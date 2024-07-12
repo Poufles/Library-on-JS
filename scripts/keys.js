@@ -4,7 +4,7 @@ function reinitializeInputContainer() {
     customize_book_title.textContent = '';
     customize_book_author.textContent = '';
     customize_book_genre.textContent = '';
-    customize_book_status.setAttribute('style', '--_status-color: #dd2525');
+    customize_book_status.setAttribute('style', '--_status-color: #34783a');
     customize_book_color.setAttribute('style', '--book-color: #fdfdfc');
 
     // Reset form
@@ -104,7 +104,7 @@ modal_book_property_status.forEach(status => {
         // Retrieve visual status
         const book_status = document.querySelector('.modal .status-container');
         // Retrieve proper color
-        let color = status_color[status.querySelector('input').value];
+        let color = object_status_color[status.querySelector('input').value];
 
         // Set visual status color
         book_status.querySelector('.status').setAttribute('style', `--_status-color: ${color}`)

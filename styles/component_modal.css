@@ -57,7 +57,7 @@ form {
 }
 
 .book-property-container div:not(:nth-of-type(n + 3)) label {
-    cursor: text;
+    cursor: pointer;
 }
 
 .book-property-container div:nth-of-type(3) label {

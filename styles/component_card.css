@@ -110,6 +110,7 @@
 }
 
 .title-author-container #title {
+    font-size: 2rem;
     padding: 0 15px;
     margin-bottom: 7px;
 }
@@ -140,8 +141,8 @@
     background-color: #ffff3b !important;
 }
 
-#read {
-    background-color: #34783a !important;
+#not-read {
+    background-color: #dd2525 !important;
 }
 
 @keyframes delete_animation {
