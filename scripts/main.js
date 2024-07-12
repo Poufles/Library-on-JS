@@ -1,15 +1,15 @@
 // Create an Object book (Constructor)
-function Book(title, author, genre, isRead, color, index) {
+function Book(book, title, author, genre, isRead, color) {
+    this.book = book;
     this.title = title;
     this.author = author;
     this.genre = genre;
     this.isRead = isRead;
     this.color = color;
-    this.index = index;
 };
 
 // Create book component (Card)
-function createBook(library, book_index, title, author, genre, color_status, id_status, color) {
+function createBook(library, title, author, genre, status_color, status_id, color) {
     // Create card container component
     const card = document.createElement('article');
     // Add proper selectors
@@ -44,24 +44,35 @@ function createBook(library, book_index, title, author, genre, color_status, id_
     btn_delete.classList.add('delete-button');
 
     // Add listeners
+    // Update
+    book_container.addEventListener('mouseup', () => {
+
+    });
+
     // Delete
     btn_delete.addEventListener('mouseup', () => {
         // Delete book from library (visual)
         library.removeChild(card);
         // Delete book from array (back-end / logic)
-        console.log(bookLibrary[book_index].index);
-        bookLibrary.splice(bookLibrary[book_index].index, 1);
-        console.log(bookLibrary);
+        // by iterating over the bookLibrary array
+        for (book of bookLibrary) {
+            // Verify if the book instance
+            // is the same as that of the card
+            if (book.book === card) {
+                // Delete this book from the array
+                bookLibrary.splice(bookLibrary.indexOf(book), 1);
+                return;
+            };
+        };
     });
 
     // Add proper values and data
     // Card
-    card.dataset.index = book_index;
     card.setAttribute('style', `--book-color: ${color}`);
     // Status
     btn_status.setAttribute('id', 'status');
-    btn_status.setAttribute('id', id_status);
-    btn_status.setAttribute('style', `--_status-color: ${color_status}`);
+    btn_status.setAttribute('id', status_id);
+    btn_status.setAttribute('style', `--_status-color: ${status_color}`);
     // Title-Author
     book_title.textContent = title;
     book_author.textContent = author;
@@ -145,8 +156,6 @@ modal_btn_add.addEventListener('mousedown', (e) => {
     // Initialize status values
     let status_id;
     let status_color;
-    // Get length of book library array
-    let libraryLength = bookLibrary.length;
     // Retrieve book properties from modal inputs
     let library = document.querySelector('.library-wrapper');
     let book_title = document.querySelector('#book-title').value;
@@ -164,15 +173,18 @@ modal_btn_add.addEventListener('mousedown', (e) => {
     // Change status to color value
     status_color = object_status_color[book_status];
 
-    // Instantiate book object
-    book = new Book(book_title, book_author, book_genre, book_status, book_color, libraryLength);
+    // Create visual book
+    book = createBook(library, book_title, book_author, book_genre, status_color, status_id, book_color);
+    // Add visual book to the DOM
+    library.appendChild(book);
+    
+    // Create book object instance
+    let book_instance = new Book(book, book_title, book_author, book_genre, book_status, book_color);
     // Add new book to array
-    bookLibrary.push(book);
-
-    library.appendChild(createBook(library, libraryLength - 1, book_title, book_author, book_genre, status_color, status_id, book_color));
+    bookLibrary.push(book_instance);
     
     // Update status banner count
-    updateStatusBanner();
+    // updateStatusBanner();
 
     // Preven submitting of form to server
     e.preventDefault();
