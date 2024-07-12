@@ -5,13 +5,16 @@
 }
 
 .status {
-    background-color: #dd2525;
+    background-color: var(--_status-color);
     border: none;
     cursor: pointer;
     width: 40px;
     height: 60px;
     position: relative;
     z-index: 1;
+}
+
+.library-wrapper .status {
     transition: 0.3s ease-in-out;
 }
 

@@ -5,10 +5,14 @@ function Book(title, genre) {
 
 const myPetitLibrary = new Array();
 
-myPetitLibrary.push(new Book('10 Little Indians', 'Thriller'));
+let book = new Book('10 Little Indians', 'Thriller');
+
+myPetitLibrary.push(book);
 console.log(myPetitLibrary);
 
-myPetitLibrary.push(new Book('Bible', 'Religious'));
+book = new Book('Bible', 'Religious');
+
+myPetitLibrary.push(book);
 console.log(myPetitLibrary);
 
 for (book of myPetitLibrary) {

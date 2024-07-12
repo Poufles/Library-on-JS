@@ -64,15 +64,15 @@
             <div class="book-container">
                 <div class="card" style="--book-color: #fdfdfc">
                     <div class="status-container" data-status="Not Read">
-                        <button class="status" id="not-read"></button>
+                        <div class="status" id="status not-read" style="--_status-color: #dd2525"></div>
                     </div>
                     <div class="book">
                         <div class="title-author-container">
-                            <h1 id="title">Libro ni Jepoy Dizon</h1>
-                            <p class="" id="author">Jepoy Dizon</p>
+                            <h1 id="title"></h1>
+                            <p class="" id="author"></p>
                         </div>
                         <div class="genre-container">
-                            <p id="genre">Memez</p>
+                            <p id="genre"></p>
                         </div>
                     </div>
                 </div>
@@ -82,19 +82,19 @@
                 <form action="">
                     <div class="book-property-container">
                         <div class="input-book-title input-container">
-                            <label class="text">Title</label>
+                            <label class="text" for="book-title">Title</label>
                             <input type="text" id="book-title" class="" value="">
                         </div>
                         <div class="input-book-author input-container">
-                            <label class="text">Author</label>
+                            <label class="text" for="book-author">Author</label>
                             <input type="text" id="book-author" class="" value="">
                         </div>
-                        <div class="input-book-genre input-container">
-                            <label class="text">Genre</label>
+                        <div class="input-book-genre select-container">
+                            <label class="text" for="book-genre">Genre</label>
                             <select name="book-genre" id="book-genre" class="">
                                 <option value="" hidden disabled selected></option>
                                 <option value="action">Action</option>
-                                <option value="comedy">Comdey</option>
+                                <option value="comedy">Comedy</option>
                                 <option value="horror">Horror</option>
                                 <option value="thriller">Thriller</option>
                                 <option value="romance">Romance</option>
@@ -103,29 +103,29 @@
                             </select>
                         </div>
                         <div class="input-book-status">
-                            <label for="" class="book-status">Status :</label>
+                            <label for="status">Status :</label>
                             <div class="status-choice">
-                                <label><input type="radio" name="status" checked id="" class="input-status">
+                                <label><input type="radio" name="status" checked id="" class="book-status" value="read">
                                     Read</label>
-                                <label><input type="radio" name="status" id="" class="input-status"> On Read</label>
-                                <label><input type="radio" name="status" id="" class="input-status"> Not Read</label>
+                                <label><input type="radio" name="status" id="" class="book-status" value="oread"> On Read</label>
+                                <label><input type="radio" name="status" id="" class="book-status" value="nread"> Not Read</label>
                             </div>
                         </div>
                         <div class="input-book-color">
                             <label for="" class="book-color">Book Color :</label>
                             <div class="color-palette">
-                                <input checked type="radio" name="color" id="color" class="input-color" value="#FFF">
-                                <input type="radio" name="color" id="color" class="input-color">
-                                <input type="radio" name="color" id="color" class="input-color">
-                                <input type="radio" name="color" id="color" class="input-color">
-                                <input type="radio" name="color" id="color" class="input-color">
+                                <input checked type="radio" name="color" id="color" class="book-color" value="#fdfdfc">
+                                <input type="radio" name="color" id="color" class="book-color" value="#dd6464">
+                                <input type="radio" name="color" id="color" class="book-color" value="#65d9ee">
+                                <input type="radio" name="color" id="color" class="book-color" value="#ee65e0">
+                                <input type="radio" name="color" id="color" class="book-color" value="#26c524">
                             </div>
                         </div>
                     </div>
                     <div class="button-container">
                         <input type="reset" value="Cancel" class="btn cancel" style="--_btn-color: #FFF">
                         <input type="reset" value="Reset" class="btn reset" style="--_btn-color: #e73333">
-                        <input type="submit" value="Add" class="btn add" style="--_btn-color: #4be733">
+                        <input type="button" value="Add" class="btn add" style="--_btn-color: #4be733">
                     </div>
                 </form>
             </div>
