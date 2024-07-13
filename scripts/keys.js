@@ -1,5 +1,5 @@
-// Function to reinitialize input containers
-function reinitializeInputContainer() {
+// Function to reinitialize modals
+function reintializeModal() {
     // Reset customize book properties
     customize_book_title.textContent = '';
     customize_book_author.textContent = '';
@@ -8,13 +8,25 @@ function reinitializeInputContainer() {
     customize_book_color.setAttribute('style', '--book-color: #fdfdfc');
 
     // Reset form
+    // Title-Author
     modal_input_book_property.forEach(container => {
         container.querySelector('.text').classList.remove('active');
         container.querySelector('input').classList.remove('active');
+        container.querySelector('input').value = '';
     });
 
+    // Genre
     modal_book_property_label.classList.remove('active');
     modal_book_property_select.classList.remove('active');
+    modal_book_property_select.value = '';
+
+    // Status
+    const initial_status = document.querySelector('.status-choice label input[type="radio"]');
+    initial_status.checked = true;
+
+    // Book Color
+    const initial_color = document.querySelector('.color-palette input[type="radio"]');
+    initial_color.checked = true;
 };
 
 // Function to open modal
@@ -26,14 +38,14 @@ btn_add.addEventListener('mousedown', () => {
 // Function to reset modal
 // of adding a book
 modal_btn_reset.addEventListener('mouseup', () => {
-    reinitializeInputContainer();
+    reintializeModal();
 });
 
 // Function to close modal
 // of adding a book
 modal_btn_close.addEventListener('mouseup', () => {
     modal_add_book.close();
-    reinitializeInputContainer();
+    reintializeModal();
 });
 
 // Function to change modal buttons style

@@ -76,8 +76,9 @@ body {
 }
 
 .library-wrapper {
-    padding: 60px 120px;
+    padding: 60px 120px 90px;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: calc(75px);
+    justify-content: center;
 }

@@ -6,7 +6,7 @@
 }
 
 .modal::backdrop {
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(4px);
 }
 
 .modal-container {
@@ -56,8 +56,16 @@ form {
     position: relative;
 }
 
-.book-property-container div:not(:nth-of-type(n + 3)) label {
+.book-property-container div:nth-of-type(n + 1) label {
+    cursor: text;
+}
+
+.book-property-container div:nth-of-type(n + 3) label {
     cursor: pointer;
+}
+
+.book-property-container div:nth-of-type(n + 3) > label {
+    cursor: default;
 }
 
 .book-property-container div:nth-of-type(3) label {
@@ -141,11 +149,14 @@ form {
     display: inline;
 }
 
+.book-property-container input[type='radio'] {
+    cursor: pointer;
+}
+
 .book-property-container>div:last-of-type>div>input[type='radio'] {
     appearance: none;
     background-color: #541818;
     border-radius: 0;
-    cursor: pointer;
     height: 15px;
     width: 15px;
     transition: 0.3s;

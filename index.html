@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/main_style.css">
     <link rel="stylesheet" href="styles/component_card.css">
     <link rel="stylesheet" href="styles/component_modal.css">
+    <link rel="stylesheet" href="styles/responsive.css">
     <script src="scripts/variables.js" defer></script>
     <script src="scripts/main.js" defer></script>
     <script src="scripts/keys.js" defer></script>
@@ -21,16 +22,16 @@
         </div>
         <ul class="legend-container">
             <li class="legend">
-                <div class="legend-banner" data-legend="nread"></div>
-                <p class="legend-text">Not Read: <span id="legend-count" data-count="0">0</span></p>
+                <div class="legend-banner" data-legend="read"></div>
+                <p class="legend-text">Read: <span id="legend-count">0</span></p>
             </li>
             <li class="legend">
                 <div class="legend-banner" data-legend="oread"></div>
-                <p class="legend-text">On Read: <span id="legend-count" data-count="0">0</span></p>
+                <p class="legend-text">On Read: <span id="legend-count">0</span></p>
             </li>
             <li class="legend">
-                <div class="legend-banner" data-legend="read"></div>
-                <p class="legend-text">Read: <span id="legend-count" data-count="0">0</span></p>
+                <div class="legend-banner" data-legend="nread"></div>
+                <p class="legend-text">Not Read: <span id="legend-count">0</span></p>
             </li>
         </ul>
     </nav>
@@ -80,15 +81,15 @@
             </div>
             <div class="customize-container">
                 <p class="title">Add New Book</p>
-                <form action="">
+                <form method="dialog">
                     <div class="book-property-container">
                         <div class="input-book-title input-container">
                             <label class="text" for="book-title">Title</label>
-                            <input type="text" id="book-title" class="" value="">
+                            <input type="text" id="book-title" class="" name="book-title"/>
                         </div>
                         <div class="input-book-author input-container">
                             <label class="text" for="book-author">Author</label>
-                            <input type="text" id="book-author" class="" value="">
+                            <input type="text" id="book-author" class="" name="book-title"/>
                         </div>
                         <div class="input-book-genre select-container">
                             <label class="text" for="book-genre">Genre</label>
@@ -126,7 +127,7 @@
                     <div class="button-container">
                         <input type="reset" value="Cancel" class="btn cancel" style="--_btn-color: #FFF">
                         <input type="reset" value="Reset" class="btn reset" style="--_btn-color: #e73333">
-                        <input type="button" value="Add" class="btn add" style="--_btn-color: #4be733">
+                        <input type="submit" value="Add" class="btn add" style="--_btn-color: #4be733">
                     </div>
                 </form>
             </div>

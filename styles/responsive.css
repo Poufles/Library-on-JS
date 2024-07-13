@@ -1,0 +1,23 @@
+@media screen and (max-width: 780px) {
+    .navbar {
+        padding: 80px 0 40px;
+        flex-direction: column;
+        gap: 40px;
+        justify-content: center;
+    }
+
+    .logo-text > .title {
+        font-size: 2.3rem;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .legend-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .library-wrapper {
+        padding: 60px 0 90px;
+    }
+}

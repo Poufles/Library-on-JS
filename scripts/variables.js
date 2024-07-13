@@ -14,9 +14,9 @@ const modal_book_property_status = document.querySelectorAll('.status-choice lab
 const modal_book_property_color = document.querySelectorAll('.color-palette input');
 const modal_add_book = document.querySelector('.modal');
 const modal_buttons = document.querySelectorAll('.modal .btn')
-const modal_btn_close = document.querySelector('.modal .cancel');
-const modal_btn_reset = document.querySelector('.modal .reset');
-const modal_btn_add = document.querySelector('.modal .add');
+const modal_btn_close = document.querySelector('.modal .btn.cancel');
+const modal_btn_reset = document.querySelector('.modal .btn.reset');
+const modal_btn_add = document.querySelector('.modal .btn.add');
 
 const bookLibrary = new Array();
 
@@ -25,3 +25,5 @@ const object_status_color = {
     oread : '#ffff3b',
     nread : '#dd2525'
 };
+
+let bookTemp;

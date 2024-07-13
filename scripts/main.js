@@ -46,7 +46,26 @@ function createBook(library, title, author, genre, status_color, status_id, colo
     // Add listeners
     // Update
     book_container.addEventListener('mouseup', () => {
+        // Create book instance variable
+        let book_instance;
 
+        // Iterate over bookLibrary array
+        // to retrieve this book instance
+        for (book of bookLibrary) {
+            // Verify if the book instance
+            // is the same as that of the card
+            if (book.book === card) {
+                // Store instance
+                book_instance = book;
+                break;
+            };
+        };
+
+        // Add edit id on modal
+        modal_add_book.setAttribute('id', 'edit');
+
+        // Edit modal
+        editModal(book_instance);
     });
 
     // Delete
@@ -61,6 +80,8 @@ function createBook(library, title, author, genre, status_color, status_id, colo
             if (book.book === card) {
                 // Delete this book from the array
                 bookLibrary.splice(bookLibrary.indexOf(book), 1);
+                // Update status banner
+                updateStatusBanner();
                 return;
             };
         };
@@ -121,36 +142,130 @@ function createDeleteSVG() {
 
 function updateStatusBanner() {
     // Retrieve legend banner element
-    const legend_banner = document.querySelectorAll('.legend-banner');
+    const legend_banner = document.querySelectorAll('.legend');
     // Create variables for legend banner
     let legend_read;
     let legend_oread;
     let legend_nread;
 
+    // Count variable for each legend
+    let count_read = 0;
+    let count_oread = 0;
+    let count_nread = 0;
+
     // Iterate over legend banner
     // Then assign proper variables
     legend_banner.forEach(legend => {
-        switch(legend.dataset.legend) {
-            case 'read': legend_read = legend; break;
-            case 'oread': legend_oread = legend; break;
-            case 'nread': legend_nread = legend; break;
+        switch (legend.querySelector('.legend-banner').dataset.legend) {
+            case 'read':
+                legend_read = legend;
+                break;
+            case 'oread':
+                legend_oread = legend;
+                break;
+            case 'nread':
+                legend_nread = legend;
+                break;
         };
     });
 
-    for (read_status of bookLibrary)
-    {
-        if (read_status.isRead === legend_read.dataset.legend) {
-            
-        } else if (read_status.isRead === legend_oread.dataset.legend) {
+    // Validate if array will be empty
+    // due to delete
+    if (bookLibrary.length === 0) {
+        legend_read.querySelector('.legend-text #legend-count').textContent = 0;
+        legend_oread.querySelector('.legend-text #legend-count').textContent = 0;
+        legend_nread.querySelector('.legend-text #legend-count').textContent = 0;
+    }
 
+    // Find proper legend to add count value
+    for (read_status of bookLibrary) {
+        console.log(legend_read.querySelector('.legend-banner').dataset.legend);
+        if (read_status.isRead === legend_read.querySelector('.legend-banner').dataset.legend) {
+            count_read++
+            legend_read.querySelector('.legend-text #legend-count').textContent = count_read;
+        } else if (read_status.isRead === legend_oread.querySelector('.legend-banner').dataset.legend) {
+            count_oread++
+            legend_oread.querySelector('.legend-text #legend-count').textContent = count_oread;
         } else {
-
+            count_nread++
+            legend_nread.querySelector('.legend-text #legend-count').textContent = count_nread;
         };
     };
 };
 
+// Function to change add book modal
+// to an edit book modal
+function editModal(book) {
+    // Change text of certain components
+    // Get header title
+    const modal_edit_text = modal_add_book.querySelector('.customize-container .title');
+    // Get add button
+    const modal_edit_btn = modal_btn_add;
+    // Change text
+    modal_edit_text.textContent = 'Edit Book';
+    modal_edit_btn.value = 'Edit'
+
+    // Retrieve all values for display and edit
+    const book_title = book.title;
+    const book_author = book.author;
+    const book_genre = book.genre;
+    const book_status = book.isRead;
+    const book_color = book.color;
+
+    // Apply book values to book customize preview
+    customize_book_title.textContent = book_title;
+    customize_book_author.textContent = book_author;
+    customize_book_genre.textContent = book_genre;
+    customize_book_status.setAttribute('style', `--_status-color: ${object_status_color[book_status]}`);
+    customize_book_color.setAttribute('style', `--book-color: ${book_color}`);
+
+    // Retrieve customization form components
+    const form_title = modal_add_book.querySelector('.input-book-title #book-title');
+    const form_author = modal_add_book.querySelector('.input-book-author #book-author');
+    const form_genre = modal_add_book.querySelector('.input-book-genre #book-genre');
+    const form_status = modal_add_book.querySelectorAll('.input-book-status input[type="radio"]');
+    const form_color = modal_add_book.querySelectorAll('.input-book-color input[type="radio"]');
+
+    // Apply values to form
+    form_title.value = book.title;
+    form_author.value = book.author;
+    form_genre.value = book.genre;
+    // Iterate over status radio buttons
+    form_status.forEach(statusItem => {
+        // Validate status
+        if (statusItem.value === book.isRead) {
+            statusItem.checked = true;
+        }
+    });
+    // Iterate over color buttons
+    form_color.forEach(colorItem => {
+        // Validate color
+        if (colorItem.value === book.color) {
+            colorItem.checked = true;
+        };
+    });
+
+    // Add active class to labels
+    // Title-Author
+    modal_input_book_property.forEach(container => {
+        container.querySelector('.text').classList.add('active');
+    });
+    // Genre
+    modal_book_property_label.classList.add('active');
+
+    // Add this book to a temp var
+    bookTemp = book;
+
+    // Open modal
+    modal_add_book.showModal();
+};
+
+
 // Function to add a new book
-modal_btn_add.addEventListener('mousedown', (e) => {
+modal_btn_add.addEventListener('mouseup', (e) => {
+    // Preven submitting of form to server
+    e.preventDefault();
+
     // Initialize a book object
     let book;
     // Initialize status values
@@ -158,11 +273,53 @@ modal_btn_add.addEventListener('mousedown', (e) => {
     let status_color;
     // Retrieve book properties from modal inputs
     let library = document.querySelector('.library-wrapper');
-    let book_title = document.querySelector('#book-title').value;
-    let book_author = document.querySelector('#book-author').value;
-    let book_genre = document.querySelector('#book-genre').value;
+    let book_title = document.querySelector('#book-title');
+    let book_author = document.querySelector('#book-author');
+    let book_genre = document.querySelector('#book-genre');
     let book_status = document.querySelector('[name="status"]:checked').value;
     let book_color = document.querySelector('[name="color"]:checked').value;
+
+    // Verify if this modal is used
+    // for edit
+    if (document.querySelector('.modal#edit') != null) {
+        // Reset certain components' labels
+        modal_add_book.removeAttribute('id', 'edit');
+        modal_add_book.querySelector('.customize-container .title').textContent = 'Add New Book';
+        modal_btn_add.value = 'Add';
+
+        // Update book component
+        // Get book components
+        const book_title__ = bookTemp.book.querySelector('.title-author-container #title')
+        const book_author__ = bookTemp.book.querySelector('.title-author-container #author')
+        const book_genre__ = bookTemp.book.querySelector('.genre-container #genre')
+        const book_status__ = bookTemp.book.querySelector('.status-container .status');
+        const book_color__ = bookTemp.book;
+        // Add values
+        book_title__.textContent = modal_book_property_title_input.value;
+        book_author__.textContent = modal_book_property_author_input.value;
+        book_genre__.textContent = modal_book_property_select.value;
+        // Remove current id status
+        book_status__.removeAttribute('id', 'not-read');
+        // Change status to proper data value
+        switch (book_status) {
+            case 'read': status_id = 'read'; break;
+            case 'oread': status_id = 'on-read'; break;
+            case 'nread': status_id = 'not-read'; break;
+        };
+        book_status__.setAttribute('id', `${status_id}`);
+        console.log(book_color);
+        book_color__.setAttribute('style', `--book-color: ${book_color}`);
+
+        // Update status banner
+        updateStatusBanner();
+
+        // Reinitialize modal
+        reintializeModal();
+
+        // Reset temp var value
+        bookTemp = undefined;
+        return;
+    };
 
     // Change status to proper data value
     switch (book_status) {
@@ -174,22 +331,18 @@ modal_btn_add.addEventListener('mousedown', (e) => {
     status_color = object_status_color[book_status];
 
     // Create visual book
-    book = createBook(library, book_title, book_author, book_genre, status_color, status_id, book_color);
+    book = createBook(library, book_title.value, book_author.value, book_genre.value, status_color, status_id, book_color);
     // Add visual book to the DOM
     library.appendChild(book);
-    
+
     // Create book object instance
-    let book_instance = new Book(book, book_title, book_author, book_genre, book_status, book_color);
+    let book_instance = new Book(book, book_title.value, book_author.value, book_genre.value, book_status, book_color);
     // Add new book to array
     bookLibrary.push(book_instance);
-    
-    // Update status banner count
-    // updateStatusBanner();
 
-    // Preven submitting of form to server
-    e.preventDefault();
-    e.stopPropagation();
-    
-    // Close Modal
-    modal_add_book.close();
+    // Update status banner count
+    updateStatusBanner();
+
+    // Reinitialize all inputs of modal
+    reintializeModal();
 });
