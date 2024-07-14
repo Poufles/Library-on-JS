@@ -3,6 +3,7 @@
     border: none;
     margin: auto;
     padding: auto;
+    overflow: visible !important;
 }
 
 .modal::backdrop {
@@ -11,7 +12,7 @@
 
 .modal-container {
     display: flex;
-    gap: 12px;
+    gap: 18px;
 }
 
 .book-container .status-container>.status {
@@ -19,16 +20,19 @@
 }
 
 .book-container .book {
-    box-shadow: none;
+    box-shadow: 0 0 15px #000;
     cursor: default;
     transition: 0s ease-in-out;
 }
 
 .customize-container {
     background-color: #232323;
+    border: 3px solid #8c12d2;
     border-radius: 5px;
+    box-shadow: 0 0 15px #8c12d2;
     color: #FFF;
     width: 300px;
+    height: 375px;
     padding: 17px 20px;
 }
 
@@ -52,23 +56,23 @@ form {
     gap: 18px;
 }
 
-.book-property-container div:not(:nth-of-type(n + 4)) {
+.book-property-container > div:not(:nth-of-type(n + 4)) {
     position: relative;
 }
 
-.book-property-container div:nth-of-type(n + 1) label {
+.book-property-container > div:nth-of-type(n + 1) label {
     cursor: text;
 }
 
-.book-property-container div:nth-of-type(n + 3) label {
+.book-property-container > div:nth-of-type(n + 3) label {
     cursor: pointer;
 }
 
-.book-property-container div:nth-of-type(n + 3) > label {
+.book-property-container > div:nth-of-type(n + 3) > label {
     cursor: default;
 }
 
-.book-property-container div:nth-of-type(3) label {
+.book-property-container > div:nth-of-type(3) label {
     cursor: pointer;
 }
 
@@ -132,7 +136,7 @@ form {
 
 .book-property-container select {
     appearance: none;
-    position: relative;
+    /* position: relative; */
     cursor: pointer;
 }
 
@@ -246,4 +250,32 @@ form {
     border: 2px solid var(--_btn-color);
     box-shadow: 0 0 15px -5px var(--_btn-color);
     color: var(--_btn-color);
+}
+
+.zoom-out {
+    animation: zoom_out 0.3s ease;
+}
+
+.zoom-in {
+    animation: zoom_in 0.3s ease;
+}
+
+@keyframes zoom_out {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    } to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes zoom_in {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    } to {
+        opacity: 0;
+        transform: scale(0);
+    }
 }

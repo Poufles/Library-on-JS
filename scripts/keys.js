@@ -27,11 +27,38 @@ function reintializeModal() {
     // Book Color
     const initial_color = document.querySelector('.color-palette input[type="radio"]');
     initial_color.checked = true;
+
+    // Notifications
+    // Remove fade-in animation
+    notification_title.classList.remove('fade-in');
+    notification_author.classList.remove('fade-in');
+    notification_genre.classList.remove('fade-in');
+    // Add fade-out animation
+    notification_title.classList.add('fade-out');
+    notification_author.classList.add('fade-out');
+    notification_genre.classList.add('fade-out');
+    // Then make display none after 0.3s
+    setTimeout(() => {
+        // Remove animation class
+        notification_title.classList.remove('fade-out');
+        notification_author.classList.remove('fade-out');
+        notification_genre.classList.remove('fade-out');
+        // Display none
+        notification_title.removeAttribute('style', 'display: block');
+        notification_author.removeAttribute('style', 'display: block');
+        notification_genre.removeAttribute('style', 'display: block');
+    }, 300);
 };
 
 // Function to open modal
 // of adding a book_property_dynamic
 btn_add.addEventListener('mousedown', () => {
+    // Add animation
+    modal_add_book.classList.add('zoom-out');
+    // Then remove after
+    setTimeout(() => {
+        modal_add_book.classList.remove('zoom-out');
+    }, 300);
     modal_add_book.showModal();
 });
 
@@ -44,8 +71,16 @@ modal_btn_reset.addEventListener('mouseup', () => {
 // Function to close modal
 // of adding a book
 modal_btn_close.addEventListener('mouseup', () => {
-    modal_add_book.close();
-    reintializeModal();
+    // Add animation
+    modal_add_book.classList.add('zoom-in');
+    // then remove after
+    setTimeout(() => {
+        // Reinitialize modal
+        reintializeModal();
+        modal_add_book.classList.remove('zoom-in');
+        modal_add_book.close();
+    }, 300);
+    // Close modal
 });
 
 // Function to change modal buttons style
@@ -134,3 +169,45 @@ modal_book_property_color.forEach(color => {
         book_color.setAttribute('style', `--book-color: ${color.value}`);
     });
 })
+
+// Function to remove required notification
+// When title input gains focus
+modal_book_property_title_input.addEventListener('focus', () => {
+    // Remove fade-in animation
+    notification_title.classList.remove('fade-in');
+    // Then make display none after 0.3s
+    setTimeout(() => {
+        // Remove animation class
+        notification_title.classList.remove('fade-out');
+        // Display none
+        notification_title.removeAttribute('style', 'display: block');
+    }, 300);
+});
+
+// Function to remove required notification
+// When title input gains focus
+modal_book_property_author_input.addEventListener('focus', () => {
+    // Remove fade-in animation
+    notification_author.classList.remove('fade-in');
+    // Then make display none after 0.3s
+    setTimeout(() => {
+        // Remove animation class
+        notification_author.classList.remove('fade-out');
+        // Display none
+        notification_author.removeAttribute('style', 'display: block');
+    }, 300);
+});
+
+// Function to remove required notification
+// When genre select gains focus
+modal_book_property_select.addEventListener('focus', () => {
+    // Remove fade-in animation
+    notification_genre.classList.remove('fade-in');
+    // Then make display none after 0.3s
+    setTimeout(() => {
+        // Remove animation class
+        notification_genre.classList.remove('fade-out');
+        // Display none
+        notification_genre.removeAttribute('style', 'display: block');
+    }, 300);
+});

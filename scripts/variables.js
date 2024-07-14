@@ -18,6 +18,10 @@ const modal_btn_close = document.querySelector('.modal .btn.cancel');
 const modal_btn_reset = document.querySelector('.modal .btn.reset');
 const modal_btn_add = document.querySelector('.modal .btn.add');
 
+const notification_title = document.querySelector('.notification-wrapper#title');
+const notification_author = document.querySelector('.notification-wrapper#author');
+const notification_genre = document.querySelector('.notification-wrapper#genre');
+
 const bookLibrary = new Array();
 
 const object_status_color = {

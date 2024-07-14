@@ -1,0 +1,70 @@
+.notification-wrapper {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    bottom: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%) translateY(40%) scale(0);
+    transition: 0.3s;
+    z-index: 2;
+}
+
+.notification-body {
+    background-color: #1c1a1a;
+    border: 3px solid #d43535;
+    border-radius: 7px;
+    padding: 7px 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    position: relative;
+}
+
+.notification-body::before {
+    border-top: 14px solid #d43535;
+    border-left: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-right: 14px solid transparent;
+    content: '';
+    position: absolute;
+    top: calc(100% + 3px);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.notification-body::after {
+    border-top: 13px solid #1c1a1a;
+    border-left: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+    border-right: 13px solid transparent;
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.notification-body :is(svg, .message) {
+    cursor: default;
+}
+
+.notification-body svg {
+    fill: #FFF;
+}
+
+.notification-body .message {
+    color: #FFF;
+    font-size: 0.9rem;
+    width: max-content;
+}
+
+.fade-in {
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 1;
+}
+
+.fade-out {
+    transform: translate(-50%, 40%) scale(0.5);
+    opacity: 0;
+}

@@ -70,8 +70,12 @@ function createBook(library, title, author, genre, status_color, status_id, colo
 
     // Delete
     btn_delete.addEventListener('mouseup', () => {
-        // Delete book from library (visual)
-        library.removeChild(card);
+        // Add "delete" animation
+        card.classList.add('delete-animation');
+        setTimeout(() => {
+            // Delete book from library (visual)
+            library.removeChild(card);
+        }, 600);
         // Delete book from array (back-end / logic)
         // by iterating over the bookLibrary array
         for (book of bookLibrary) {
@@ -169,17 +173,13 @@ function updateStatusBanner() {
         };
     });
 
-    // Validate if array will be empty
-    // due to delete
-    if (bookLibrary.length === 0) {
-        legend_read.querySelector('.legend-text #legend-count').textContent = 0;
-        legend_oread.querySelector('.legend-text #legend-count').textContent = 0;
-        legend_nread.querySelector('.legend-text #legend-count').textContent = 0;
-    }
+    // Reset visual banner count
+    legend_read.querySelector('.legend-text #legend-count').textContent = 0;
+    legend_oread.querySelector('.legend-text #legend-count').textContent = 0;
+    legend_nread.querySelector('.legend-text #legend-count').textContent = 0;
 
     // Find proper legend to add count value
     for (read_status of bookLibrary) {
-        console.log(legend_read.querySelector('.legend-banner').dataset.legend);
         if (read_status.isRead === legend_read.querySelector('.legend-banner').dataset.legend) {
             count_read++
             legend_read.querySelector('.legend-text #legend-count').textContent = count_read;
@@ -257,9 +257,14 @@ function editModal(book) {
     bookTemp = book;
 
     // Open modal
+    // Add animation
+    modal_add_book.classList.add('zoom-out');
+    // then remove after
+    setTimeout(() => {
+        modal_add_book.classList.remove('zoom-out');
+    }, 300);
     modal_add_book.showModal();
 };
-
 
 // Function to add a new book
 modal_btn_add.addEventListener('mouseup', (e) => {
@@ -278,6 +283,39 @@ modal_btn_add.addEventListener('mouseup', (e) => {
     let book_genre = document.querySelector('#book-genre');
     let book_status = document.querySelector('[name="status"]:checked').value;
     let book_color = document.querySelector('[name="color"]:checked').value;
+
+    console.log(book_title.value)
+    // Validate title has value
+    if (book_title.value === '') {
+        // Display required notification
+        notification_title.setAttribute('style', 'display: block');
+        setTimeout(() => {
+            notification_title.classList.add('fade-in');
+        }, 1);
+        return;
+    }
+
+    // Validate author has value
+    if (book_author.value === '') {
+        // Display required notification
+        // Display required notification
+        notification_author.setAttribute('style', 'display: block');
+        setTimeout(() => {
+            notification_author.classList.add('fade-in');
+        }, 1);
+        return;
+    }
+    
+    // Validate genre has value
+    if (book_genre.value === '') {
+        // Display required notification
+        // Display required notification
+        notification_genre.setAttribute('style', 'display: block');
+        setTimeout(() => {
+            notification_genre.classList.add('fade-in');
+        }, 1);
+        return;
+    }
 
     // Verify if this modal is used
     // for edit
@@ -307,8 +345,15 @@ modal_btn_add.addEventListener('mouseup', (e) => {
             case 'nread': status_id = 'not-read'; break;
         };
         book_status__.setAttribute('id', `${status_id}`);
-        console.log(book_color);
         book_color__.setAttribute('style', `--book-color: ${book_color}`);
+
+        // Change back-end array values
+        bookTemp.title = modal_book_property_title_input.value;
+        bookTemp.author = modal_book_property_author_input.value;
+        bookTemp.genre = modal_book_property_select.value;
+        bookTemp.isRead = book_status;
+        bookTemp.color = book_color;
+        console.log(bookTemp);
 
         // Update status banner
         updateStatusBanner();
@@ -318,6 +363,15 @@ modal_btn_add.addEventListener('mouseup', (e) => {
 
         // Reset temp var value
         bookTemp = undefined;
+
+        // Close modal
+        // Add animation
+        modal_add_book.classList.add('zoom-in');
+        // then remove after
+        setTimeout(() => {
+            modal_add_book.classList.remove('zoom-in');
+            modal_add_book.close();
+        }, 300);
         return;
     };
 
@@ -334,6 +388,12 @@ modal_btn_add.addEventListener('mouseup', (e) => {
     book = createBook(library, book_title.value, book_author.value, book_genre.value, status_color, status_id, book_color);
     // Add visual book to the DOM
     library.appendChild(book);
+    // Add "add" animation
+    book.classList.add('add-animation');
+    // then remove after
+    setTimeout(() => {
+        book.classList.remove('add-animation');
+    }, 600);
 
     // Create book object instance
     let book_instance = new Book(book, book_title.value, book_author.value, book_genre.value, book_status, book_color);
@@ -345,4 +405,13 @@ modal_btn_add.addEventListener('mouseup', (e) => {
 
     // Reinitialize all inputs of modal
     reintializeModal();
+
+    // Close modal
+    // Add animation
+    modal_add_book.classList.add('zoom-in');
+    // then remove after
+    setTimeout(() => {
+        modal_add_book.classList.remove('zoom-in');
+        modal_add_book.close();
+    }, 300);
 });
