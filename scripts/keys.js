@@ -71,6 +71,13 @@ modal_btn_reset.addEventListener('mouseup', () => {
 // Function to close modal
 // of adding a book
 modal_btn_close.addEventListener('mouseup', () => {
+    // Reset certain components' labels
+    modal_add_book.removeAttribute('id', 'edit');
+    modal_add_book.querySelector('.customize-container .title').textContent = 'Add New Book';
+    modal_btn_add.value = 'Add';
+    // Reset book temp
+    bookTemp = undefined
+    
     // Add animation
     modal_add_book.classList.add('zoom-in');
     // then remove after
@@ -78,9 +85,9 @@ modal_btn_close.addEventListener('mouseup', () => {
         // Reinitialize modal
         reintializeModal();
         modal_add_book.classList.remove('zoom-in');
+        // Close modal
         modal_add_book.close();
     }, 300);
-    // Close modal
 });
 
 // Function to change modal buttons style
@@ -141,6 +148,7 @@ modal_book_property_select.addEventListener('change', () => {
 modal_book_property_select.addEventListener('blur', () => {
     if (modal_book_property_select.value !== '') {
         modal_book_property_label.classList.add('active');
+        modal_book_property_select.classList.add('active');
     };
 });
 

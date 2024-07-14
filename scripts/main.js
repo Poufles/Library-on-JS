@@ -249,9 +249,11 @@ function editModal(book) {
     // Title-Author
     modal_input_book_property.forEach(container => {
         container.querySelector('.text').classList.add('active');
+        container.querySelector('input').classList.add('active');
     });
     // Genre
     modal_book_property_label.classList.add('active');
+    modal_book_property_select.classList.add('active');
 
     // Add this book to a temp var
     bookTemp = book;
@@ -284,7 +286,6 @@ modal_btn_add.addEventListener('mouseup', (e) => {
     let book_status = document.querySelector('[name="status"]:checked').value;
     let book_color = document.querySelector('[name="color"]:checked').value;
 
-    console.log(book_title.value)
     // Validate title has value
     if (book_title.value === '') {
         // Display required notification
@@ -353,7 +354,6 @@ modal_btn_add.addEventListener('mouseup', (e) => {
         bookTemp.genre = modal_book_property_select.value;
         bookTemp.isRead = book_status;
         bookTemp.color = book_color;
-        console.log(bookTemp);
 
         // Update status banner
         updateStatusBanner();
